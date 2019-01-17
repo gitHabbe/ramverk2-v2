@@ -3,3 +3,5 @@ detta är rad 1
 detta är rad 2
 
 detta är rad 3
+
+detta är rad 4
