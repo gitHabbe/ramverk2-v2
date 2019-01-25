@@ -4,6 +4,8 @@ const cors          = require('cors');
 const bodyParser    = require("body-parser");
 const index         = require("./routes/index.js");
 const reports       = require("./routes/report.js");
+const register      = require("./routes/register.js");
+const login      = require("./routes/login.js");
 
 const app = express();
 
@@ -24,6 +26,8 @@ if (process.env.NODE_ENV !== 'test') {
 }
 
 app.use('/', index);
+app.use('/login', login);
+app.use('/register', register);
 app.use('/reports', reports);
 
 
