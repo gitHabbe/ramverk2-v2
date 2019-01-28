@@ -10,7 +10,7 @@ router.get('/kmom01', async (req, res) => {
         kmomData
     };
 
-    res.json(data);
+    res.status(200).json(data);
 });
 
 router.get('/kmom02', async (req, res) => {
@@ -19,7 +19,7 @@ router.get('/kmom02', async (req, res) => {
         kmomData
     };
 
-    res.json(data);
+    res.status(200).json(data);
 });
 
 async function getReport(kmom) {
