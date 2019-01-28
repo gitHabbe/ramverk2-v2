@@ -5,7 +5,7 @@ const bodyParser    = require("body-parser");
 const index         = require("./routes/index.js");
 const reports       = require("./routes/report.js");
 const register      = require("./routes/register.js");
-const login      = require("./routes/login.js");
+const login         = require("./routes/login.js");
 
 const app = express();
 

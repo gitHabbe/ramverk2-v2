@@ -7,8 +7,9 @@ const jwt       = require('jsonwebtoken');
 
 router.post('/', async function(req, res, next) {
     const { email, password } = req.body;
+	console.log('​password', password)
 
-    const getUser = () => {
+    const getUser = (email) => {
         return new Promise((resolve, reject) => {
             db.all(
                 "SELECT * FROM users WHERE email = ?",
@@ -20,7 +21,10 @@ router.post('/', async function(req, res, next) {
             })
         });
     };
-    const user = await getUser();
+    const user = await getUser(email);
+    if (!user) {
+        return res.sendStatus(401);
+    }
     const isCorrectPass = await bcrypt.compare(password, user.password);
     if (isCorrectPass) {
         const payload = { email };
@@ -29,7 +33,6 @@ router.post('/', async function(req, res, next) {
 		console.log('​token', token)
         // return token;
     }
-
 
     return res.json(token);
 });

@@ -1,7 +1,9 @@
-var express = require('express');
-var router  = express.Router();
-var fs      = require('fs');
-const jwt   = require('jsonwebtoken');
+var express     = require('express');
+var router      = express.Router();
+var fs          = require('fs');
+const jwt       = require('jsonwebtoken');
+const sqlite3   = require('sqlite3').verbose();
+const db        = new sqlite3.Database('./db/texts.sqlite');
 
 router.get('/', function(req, res, next) {
     
@@ -15,14 +17,22 @@ router.get('/', function(req, res, next) {
 
 
 router.post("/reports", checkToken, (req, res) => {
-    const { kmom, data } = req.body;
+    const { kmom, writer, report } = req.body;
     const newKmom = {
         kmom,
-        data
+        writer,
+        report
     };
 
-    // console.log("/reports route with middleware");
-	// console.log('​data', data)
+    db.run(
+        "INSERT INTO reports (kmom, writer, report) VALUES (?, ?, ?)",
+        [ kmom, writer, report ], err => {
+        if (err) {
+            return console.log('​err', err)
+        } else {
+            return console.log("report created");
+        }
+    });
     res.status(201).json(newKmom);
 });
 
