@@ -14,18 +14,22 @@ router.get('/', function(req, res, next) {
 });
 
 
-router.get("/reports", checkToken, (req, res) => {
-    console.log("/reports route with middleware");
-    res.sendStatus(200);
+router.post("/reports", checkToken, (req, res) => {
+    const { kmom, data } = req.body;
+    const newKmom = {
+        kmom,
+        data
+    };
+
+    // console.log("/reports route with middleware");
+	// console.log('​data', data)
+    res.status(201).json(newKmom);
 });
 
 function checkToken(req, res, next) {
     const token = req.headers['x-access-token'] || req.headers['authorization'];
-	// console.log('​checkToken -> req.headers', req.headers)
-	console.log('​checkToken -> token', token)
-    // next();
+
     jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
-		console.log('​jwt.verify -> decoded', decoded)
         if (err) {
 			console.log('​checkToken -> err', err);
             return res.sendStatus(401);
