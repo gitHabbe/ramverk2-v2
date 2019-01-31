@@ -22,7 +22,7 @@ class FakeAPI {
                 return {
                     status: 200,
                     title: "Home",
-                    data: "Welcome to fakepi"
+                    data: "Welcome to fakeapi"
                 }
             case "about":
                 return {
