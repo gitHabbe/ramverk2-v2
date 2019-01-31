@@ -2,7 +2,7 @@ const express       = require('express');
 const router        = express.Router();
 const sqlite3       = require('sqlite3').verbose();
 const db            = new sqlite3.Database('./db/texts.sqlite');
-const bcrypt        = require('bcrypt');
+const bcrypt        = require('bcryptjs');
 const saltRounds    = 10;
 
 router.post('/', async (req, res, next) => {

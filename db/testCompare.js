@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const myPlaintextPassword = 'longandhardP4$$w0rD';
 const hash = 'superlonghashedpasswordfetchedfromthedatabase';
 

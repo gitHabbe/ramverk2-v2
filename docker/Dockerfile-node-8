@@ -1,0 +1,11 @@
+# use a base image
+FROM node:8
+
+# create work dir
+RUN mkdir -p /app
+
+WORKDIR /app
+
+# install npm packages
+COPY package.json /app
+RUN npm install
