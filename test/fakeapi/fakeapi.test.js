@@ -34,7 +34,7 @@ test("Post submit login information", () => {
     expect(res.status).toBe(exp);
 });
 
-test("Post submit login information", () => {
+test("Post submit login error", () => {
     let exp = 201;
     const res = API.getPost("report");
     expect(res.status).not.toBe(exp);
