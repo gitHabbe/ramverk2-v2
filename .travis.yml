@@ -15,8 +15,6 @@ before_script:
 
 script:
     - npm run test
-    - npm run report
 
-# after_success:
-#     - npm run report-coveralls
-#     - npm run report-codecov
+after_success:
+    - npm run report
