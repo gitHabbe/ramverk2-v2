@@ -3,7 +3,9 @@
   "version": "2.0.0",
   "description": "",
   "main": "index.js",
-  "jest": { "collectCoverage": true },
+  "jest": {
+    "collectCoverage": true
+  },
   "scripts": {
     "start": "node app.js",
     "nodemon": "node_modules/.bin/nodemon app.js",

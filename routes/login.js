@@ -27,14 +27,16 @@ router.post('/', async function(req, res, next) {
     }
     const isCorrectPass = await bcrypt.compare(password, user.password);
     if (isCorrectPass) {
-        const payload = { email };
+        const payload = { "email": email };
         const secret = process.env.JWT_SECRET;
         var token = jwt.sign(payload, secret, { expiresIn: '1h'});
 		console.log('​token', token)
         // return token;
+        return res.json(token);
+    } else {
+        return res.status(401);
     }
 
-    return res.json(token);
 });
 
 module.exports = router;

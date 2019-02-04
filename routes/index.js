@@ -15,6 +15,9 @@ router.get('/', function(req, res, next) {
     res.json(data);
 });
 
+router.get("/jwt_outh", checkToken, (req, res) => {
+    return res.sendStatus(200);
+});
 
 router.post("/reports", checkToken, (req, res) => {
     const { kmom, writer, report } = req.body;
@@ -42,7 +45,7 @@ function checkToken(req, res, next) {
     jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
         if (err) {
 			console.log('​checkToken -> err', err);
-            return res.sendStatus(401);
+            return res.sendStatus(403);
         }
 
         // Valid token send on the request
