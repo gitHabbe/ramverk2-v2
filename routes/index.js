@@ -45,7 +45,7 @@ function checkToken(req, res, next) {
     jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
         if (err) {
 			console.log('​checkToken -> err', err);
-            return res.sendStatus(403);
+            return res.sendStatus(401);
         }
 
         // Valid token send on the request
