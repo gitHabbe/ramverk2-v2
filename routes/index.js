@@ -16,7 +16,10 @@ router.get('/', function(req, res, next) {
 });
 
 router.get("/jwt_outh", checkToken, (req, res) => {
+    // return res.sendStatus(200);
+    console.log("test");
     return res.sendStatus(200);
+
 });
 
 router.post("/reports", checkToken, (req, res) => {
@@ -44,8 +47,8 @@ function checkToken(req, res, next) {
 
     jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
         if (err) {
-			console.log('​checkToken -> err', err);
-            return res.sendStatus(401);
+			// console.log('​checkToken -> err', err);
+            return res.status(401).json({'err': 'err'});
         }
 
         // Valid token send on the request
