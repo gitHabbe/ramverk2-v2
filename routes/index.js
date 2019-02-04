@@ -16,6 +16,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get("/jwt_outh", checkToken, (req, res) => {
+	console.log('TCL: res', res)
     // return res.sendStatus(200);
     console.log("test");
     return res.sendStatus(200);
@@ -44,14 +45,13 @@ router.post("/reports", checkToken, (req, res) => {
 
 function checkToken(req, res, next) {
     const token = req.headers['x-access-token'] || req.headers['authorization'];
+	console.log('TCL: checkToken -> token', token)
 
     jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
         if (err) {
 			// console.log('​checkToken -> err', err);
-            return res.status(401).json({'err': 'err'});
+            res.json({'err': '401'});
         }
-
-        // Valid token send on the request
         next();
     });
 }
