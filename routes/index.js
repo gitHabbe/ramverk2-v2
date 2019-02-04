@@ -19,7 +19,8 @@ router.get("/jwt_outh", checkToken, (req, res) => {
 	console.log('TCL: res', res)
     // return res.sendStatus(200);
     console.log("test");
-    return res.sendStatus(200);
+    // return res.redirect("http://me-react.nhallberg.me/")
+    return res.status(200).json();
 
 });
 
@@ -51,6 +52,8 @@ function checkToken(req, res, next) {
         if (err) {
 			// console.log('​checkToken -> err', err);
             res.json({'err': '401'});
+        } else {
+            res.json({'data': token});
         }
         next();
     });
