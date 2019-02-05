@@ -23,18 +23,19 @@ router.post('/', async function(req, res, next) {
     };
     const user = await getUser(email);
     if (!user) {
-        return res.sendStatus(401);
+        return res.sendStatus(404);
     }
     const isCorrectPass = await bcrypt.compare(password, user.password);
     if (isCorrectPass) {
         const payload = { "email": email };
         const secret = process.env.JWT_SECRET;
-        var token = jwt.sign(payload, secret, { expiresIn: '1h'});
+        const token = jwt.sign(payload, secret, { expiresIn: '1h'});
 		console.log('​token', token)
         // return token;
-        return res.json(token);
+        return res.status(200).json({'email': email, 'token': token});
     } else {
-        return res.status(401);
+        console.log("else");
+        return res.status(403).json({'err': 401});
     }
 
 });

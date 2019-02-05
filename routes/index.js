@@ -16,21 +16,14 @@ router.get('/', function(req, res, next) {
 });
 
 router.get("/jwt_outh", checkToken, (req, res) => {
-	console.log('TCL: res', res)
-    // return res.sendStatus(200);
-    console.log("test");
-    // return res.redirect("http://me-react.nhallberg.me/")
-    return res.status(200).json();
+	// console.log('TCL: res', res)
+    return res.status(200);
 
 });
 
 router.post("/reports", checkToken, (req, res) => {
     const { kmom, writer, report } = req.body;
-    const newKmom = {
-        kmom,
-        writer,
-        report
-    };
+    const newKmom = { kmom, writer, report };
 
     db.run(
         "INSERT INTO reports (kmom, writer, report) VALUES (?, ?, ?)",
@@ -50,10 +43,9 @@ function checkToken(req, res, next) {
 
     jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
         if (err) {
-			// console.log('​checkToken -> err', err);
-            res.json({'err': '401'});
+            res.status(403).json({'err': 403});
         } else {
-            res.json({'data': token});
+            res.status(200).json({'token': token});
         }
         next();
     });
