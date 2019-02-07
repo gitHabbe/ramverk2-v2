@@ -22,6 +22,15 @@ router.get('/kmom02', async (req, res) => {
     res.status(200).json(data);
 });
 
+router.get('/kmom03', async (req, res) => {
+    const kmomData = await getReport("kmom03");
+    const data = {
+        kmomData
+    };
+
+    res.status(200).json(data);
+});
+
 async function getReport(kmom) {
     return new Promise((resolve, reject) => {
         db.all(
