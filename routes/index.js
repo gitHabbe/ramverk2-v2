@@ -8,6 +8,7 @@ const db        = new sqlite3.Database('./db/texts.sqlite');
 router.get('/', function(req, res, next) {
     
     const text = fs.readFileSync("./reports/me.txt", 'utf8');
+    console.log("res.asdf", res.asdf);
     const data = {
         data: { text }
     };
@@ -46,6 +47,7 @@ function checkToken(req, res, next) {
         if (err) {
             return res.status(403).json({'err': 403});
         } else {
+            res.asdf = "test";
             res.json({'token': token, email: decoded.email});
         }
         next();
