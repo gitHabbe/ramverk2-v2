@@ -72,7 +72,7 @@ VALUES
 
 
         Docker utan enhetstester kan kännas lite tomt. Annat än att installationen går igenom utan felmeddelanden så verkar det inte finnas mycket mer data att använda. Såvida man inte vill testa ett gäng funktioner eller verktyg manuellt så misstänker jag att man måste ha några typer av tester för att få ut något av det. Jag vet fortfarande inte hur man tester komponenter som är för frontend delen av applikationen än. Just nu känns det meningslöst men förhoppningsvis så försvinner den känslan i framtiden. Just nu känns det som om vem som helst kan skriva tester som ger 100% kodtäckning. Eftersom dom är så viktiga skulle jag verkligen vilja veta vad som gör tester bra och dåliga då båda kan se lika bra ut på papper i form av rapportering, men i verkligen har helt olika effektivitet."
-    ),¨
+    ),
     (
         "kmom04",
         "niklas@bth.se",
