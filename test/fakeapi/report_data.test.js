@@ -4,6 +4,13 @@ const request = require('supertest');
 const server = require('../../app.js');
 
 describe('Reports', () => {
+    describe('GET /invalid', () => {
+        it('404 BAD PATH', async (done) => {
+            const res = await request(server).get("/invalid");
+            expect(res.status).toBe(404);
+            done();
+        })
+    });
     describe('GET /reports/kmom01', () => {
         it('200 HAPPY PATH', async (done) => {
             const res = await request(server).get("/reports/kmom01");
