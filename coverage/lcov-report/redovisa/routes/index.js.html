@@ -20,31 +20,31 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">33.33% </span>
+        <span class="strong">75.86% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>10/30</span>
+        <span class='fraction'>22/29</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">66.67% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/6</span>
+        <span class='fraction'>4/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">66.67% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/6</span>
+        <span class='fraction'>4/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">33.33% </span>
+        <span class="strong">75.86% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>10/30</span>
+        <span class='fraction'>22/29</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -102,8 +102,7 @@
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
 <a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L57'></a><a href='#L57'>57</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -112,18 +111,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -145,17 +143,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -167,20 +165,19 @@ const jwt       = require('jsonwebtoken');
 const sqlite3   = require('sqlite3').verbose();
 const db        = new sqlite3.Database('./db/texts.sqlite');
 &nbsp;
-router.get('/', <span class="fstat-no" title="function not covered" >fu</span>nction(req, res, next) {
+router.get('/', function(req, res, next) {
     
-    const text = <span class="cstat-no" title="statement not covered" >fs.readFileSync("./reports/me.txt", 'utf8');</span>
-<span class="cstat-no" title="statement not covered" >    console.log("res.asdf", res.asdf);</span>
-    const data = <span class="cstat-no" title="statement not covered" >{</span>
+    const text = fs.readFileSync("./reports/me.txt", 'utf8');
+    const data = {
         data: { text }
     };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    res.json(data);</span>
+    return res.json(data);
 });
 &nbsp;
-router.get("/jwt_outh", checkToken, <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
+router.get("/jwt_outh", checkToken, (req, res) =&gt; {
 	// console.log('TCL: res', res)
-<span class="cstat-no" title="statement not covered" >    return res.status(200);</span>
+    return res.status(200);
 &nbsp;
 });
 &nbsp;
@@ -201,18 +198,18 @@ router.post("/reports", checkToken, <span class="fstat-no" title="function not c
     // return res;
 });
 &nbsp;
-function <span class="fstat-no" title="function not covered" >checkToken(</span>req, res, next) {
-    const token = <span class="cstat-no" title="statement not covered" >req.headers['x-access-token'] || req.headers['authorization'];</span>
-<span class="cstat-no" title="statement not covered" >	console.log('TCL: checkToken -&gt; token', token)</span>
+function checkToken(req, res, next) {
+    const token = req.headers['x-access-token'] || req.headers['authorization'];
+	console.log('TCL: checkToken -&gt; token', token)
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    jwt.verify(token, process.env.JWT_SECRET, <span class="fstat-no" title="function not covered" >(e</span>rr, decoded) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        if (err) {</span>
-<span class="cstat-no" title="statement not covered" >            return res.status(403).json({'err': 403});</span>
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) =&gt; {
+        if (err) {
+            return res.status(403).json({'err': 403});
         } else {
-<span class="cstat-no" title="statement not covered" >            res.asdf = "test";</span>
-<span class="cstat-no" title="statement not covered" >            res.json({'token': token, email: decoded.email});</span>
+            res.asdf = "test";
+            res.json({'token': token, email: decoded.email});
         }
-<span class="cstat-no" title="statement not covered" >        next();</span>
+        next();
     });
 }
 &nbsp;
@@ -223,7 +220,7 @@ module.exports = router;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Feb 11 2019 14:54:10 GMT+0100 (CET)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Feb 17 2019 11:15:39 GMT+0100 (CET)
 </div>
 </div>
 <script src="../../prettify.js"></script>

@@ -8,12 +8,11 @@ const db        = new sqlite3.Database('./db/texts.sqlite');
 router.get('/', function(req, res, next) {
     
     const text = fs.readFileSync("./reports/me.txt", 'utf8');
-    console.log("res.asdf", res.asdf);
     const data = {
         data: { text }
     };
 
-    res.json(data);
+    return res.json(data);
 });
 
 router.get("/jwt_outh", checkToken, (req, res) => {

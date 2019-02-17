@@ -20,31 +20,31 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">53.33% </span>
+        <span class="strong">93.75% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>8/15</span>
+        <span class='fraction'>15/16</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/2</span>
+        <span class='fraction'>1/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/2</span>
+        <span class='fraction'>2/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">53.33% </span>
+        <span class="strong">93.75% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>8/15</span>
+        <span class='fraction'>15/16</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -70,51 +70,54 @@
 <a name='L22'></a><a href='#L22'>22</a>
 <a name='L23'></a><a href='#L23'>23</a>
 <a name='L24'></a><a href='#L24'>24</a>
-<a name='L25'></a><a href='#L25'>25</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const express       = require('express');
 const router        = express.Router();
-const sqlite3       = require('sqlite3').verbose();
-const db            = new sqlite3.Database('./db/texts.sqlite');
+const db            = require("../db/database.js");
 const bcrypt        = require('bcryptjs');
 const saltRounds    = 10;
 &nbsp;
-router.post('/', <span class="fstat-no" title="function not covered" >as</span>ync (req, res, next) =&gt; {
-    const { email, password } = <span class="cstat-no" title="statement not covered" >req.body;</span>
-    const hashedPassword = <span class="cstat-no" title="statement not covered" >await bcrypt.hash(password, saltRounds);</span>
-<span class="cstat-no" title="statement not covered" >    db.run(</span>
+router.post('/', async (req, res, next) =&gt; {
+    const { email, password } = req.body;
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+    console.log("/register");
+    db.run(
         "INSERT INTO users (email, password) VALUES (?, ?)",
-        [ email, hashedPassword ], <span class="fstat-no" title="function not covered" >er</span>r =&gt; {
-<span class="cstat-no" title="statement not covered" >        if (err) {</span>
-<span class="cstat-no" title="statement not covered" >            return console.log('​err', err)</span>
-        } else {
-<span class="cstat-no" title="statement not covered" >            return console.log("user created");</span>
-        }
+        [ email, hashedPassword ], err =&gt; {
+            console.log("IN DB");
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (err) {
+                console.log('​err', err)
+            } else {
+<span class="cstat-no" title="statement not covered" >                console.log("user created");</span>
+            }
     });
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    res.send("ok");</span>
+    res.send("ok");
 });
 &nbsp;
 module.exports = router;
@@ -124,7 +127,7 @@ module.exports = router;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Feb 11 2019 14:54:10 GMT+0100 (CET)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Feb 17 2019 11:15:39 GMT+0100 (CET)
 </div>
 </div>
 <script src="../../prettify.js"></script>

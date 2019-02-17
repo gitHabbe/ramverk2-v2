@@ -6,4 +6,4 @@ module.exports = (() => {
     }
 
     return new sqlite3.Database('./db/texts.sqlite');
-}());
+})();

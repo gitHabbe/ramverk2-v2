@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">69.57% </span>
+        <span class="strong">81.82% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>16/23</span>
+        <span class='fraction'>18/22</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">50% </span>
@@ -30,21 +30,21 @@
         <span class='fraction'>1/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">66.67% </span>
+        <span class="strong">83.33% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>4/6</span>
+        <span class='fraction'>5/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">72.73% </span>
+        <span class="strong">85.71% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>16/22</span>
+        <span class='fraction'>18/21</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -97,7 +97,16 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -117,23 +126,14 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -143,8 +143,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">var express     = require('express');
 var router      = express.Router();
 var fs          = require('fs');
-const sqlite3   = require('sqlite3').verbose();
-const db        = new sqlite3.Database('./db/texts.sqlite');
+const db            = require("../db/database.js");
+&nbsp;
 &nbsp;
 router.get('/kmom01', async (req, res) =&gt; {
     const kmomData = await getReport("kmom01");
@@ -155,13 +155,13 @@ router.get('/kmom01', async (req, res) =&gt; {
     res.status(200).json(data);
 });
 &nbsp;
-router.get('/kmom02', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
-    const kmomData = <span class="cstat-no" title="statement not covered" >await getReport("kmom02");</span>
-    const data = <span class="cstat-no" title="statement not covered" >{</span>
+router.get('/kmom02', async (req, res) =&gt; {
+    const kmomData = await getReport("kmom02");
+    const data = {
         kmomData
     };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    res.status(200).json(data);</span>
+    res.status(200).json(data);
 });
 &nbsp;
 router.get('/kmom03', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
@@ -193,7 +193,7 @@ module.exports = router;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Feb 11 2019 14:54:10 GMT+0100 (CET)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Feb 17 2019 11:15:39 GMT+0100 (CET)
 </div>
 </div>
 <script src="../../prettify.js"></script>
